@@ -2,8 +2,10 @@ import { useState } from 'react';
 import reactLogo from '../assets/react.svg';
 import viteLogo from '/vite.svg';
 import '../index.css';
+import Header from './Header';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+function Home() {
   const [count, setCount] = useState(0);
 
   return (
@@ -30,6 +32,11 @@ function App() {
             >
               Contador: {count}
             </button>
+            <p className="mt-4 text-gray-600">
+              Edita{' '}
+              <code className="bg-gray-100 px-2 py-1 rounded">src/App.jsx</code>{' '}
+              y guarda para probar HMR
+            </p>
           </div>
         </div>
         {/* Grid Container */}
@@ -55,6 +62,54 @@ function App() {
         </p>
       </div>
     </div>
+  );
+}
+
+function About() {
+  return (
+    <div className="text-center">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6">Acerca de</h1>
+      <div className="card bg-white p-6 rounded-lg shadow-lg">
+        <p className="text-gray-600">
+          Esta es una aplicación de ejemplo creada con Vite y React.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <div className="text-center">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6">Contacto</h1>
+      <div className="card bg-white p-6 rounded-lg shadow-lg">
+        <p className="text-gray-600">
+          Puedes contactarnos a través de nuestro correo electrónico.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+import Footer from './Footer';
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-gray-100 flex flex-col">
+        <Header />
+        <div className="flex-grow">
+          <div className="w-full max-w-6xl mx-auto px-4 py-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
