@@ -6,12 +6,22 @@ import Header from './Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductList from './ProductList';
 import Footer from './Footer';
+import PriceSorting from './PriceSorting';
 
 function Home({ searchTerm }) {
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const handleSort = (order) => {
+    setSortOrder(order);
+  };
+
   return (
-    <div className="w-full bg-gray-100 flex flex-col items-center p-4">
+    <div className="w-full min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-6xl mx-auto">
-        <ProductList searchTerm={searchTerm} />
+        <div className="flex justify-end items-center mb-6">
+          <PriceSorting onSort={handleSort} />
+        </div>
+        <ProductList searchTerm={searchTerm} sortOrder={sortOrder} />
       </div>
     </div>
   );

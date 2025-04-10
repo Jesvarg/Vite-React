@@ -61,51 +61,46 @@ const products = [
   },
 ];
 
-const ProductList = ({ searchTerm = '' }) => {
+const ProductList = ({ searchTerm = '', sortOrder = 'asc' }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
-    if (searchTerm.trim() === '') {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter(
+    let result = [...products];
+
+    // Aplicar filtro de búsqueda
+    if (searchTerm) {
+      result = result.filter(
         (product) =>
           product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           product.description.toLowerCase().includes(searchTerm.toLowerCase()),
       );
-      setFilteredProducts(filtered);
     }
-  }, [searchTerm]);
+
+    // Aplicar ordenamiento
+    result.sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+
+    setFilteredProducts(result);
+  }, [searchTerm, sortOrder, products]);
+
+  if (filteredProducts.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-gray-600">No se encontraron productos</p>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-16 w-16 mx-auto text-gray-400 mb-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <h3 className="text-xl font-semibold text-gray-700 mb-2">
-            No se encontraron productos
-          </h3>
-        </div>
-      )}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {filteredProducts.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
 };
