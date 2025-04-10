@@ -4,15 +4,9 @@ import { useState } from 'react';
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   const [likes, setLikes] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = () => {
-    if (!isLiked) {
-      setLikes((prev) => prev + 1);
-    } else {
-      setLikes((prev) => prev - 1);
-    }
-    setIsLiked(!isLiked);
+    setLikes((prev) => prev + 1);
   };
 
   return (
@@ -49,11 +43,11 @@ const ProductCard = ({ product }) => {
               className="px-4 py-2 bg-purple-500 text-white rounded-lg font-medium
                        hover:bg-purple-600 transition-colors duration-200
                        focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50
-                       flex flex-col items-center"
+                       flex flex-col items-center w-16"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`h-6 w-6 ${isLiked ? 'fill-current' : ''}`}
+                className="h-8 w-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
