@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
           <div className="flex gap-2 w-full">
             <button
               onClick={() => addToCart(product)}
-              className="flex-1 px-4 py-2 bg-purple-500 text-white rounded-lg font-medium
+              className="flex-1 px-0 py-0 bg-purple-500 text-white rounded-lg font-medium
                        hover:bg-purple-600 transition-colors duration-200
                        focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
             >
@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
             </button>
             <button
               onClick={handleLike}
-              className="px-4 py-2 bg-purple-500 text-white rounded-lg font-medium
+              className="px-0 py-0 bg-purple-500 text-white rounded-lg font-medium
                        hover:bg-purple-600 transition-colors duration-200
                        focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50
                        flex flex-col items-center w-16"
