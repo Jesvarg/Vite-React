@@ -4,7 +4,7 @@ const LikesCounter = () => {
   const [totalLikes, setTotalLikes] = useState(0);
 
   const handleLike = () => {
-    setTotalLikes((prev) => prev + 1);
+    setTotalLikes(prev => prev + 1);
   };
 
   return (
@@ -34,4 +34,4 @@ const LikesCounter = () => {
   );
 };
 
-export default LikesCounter;
+export default LikesCounter; 
