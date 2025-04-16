@@ -11,15 +11,15 @@ const Header = ({ onSearch }) => {
 
   return (
     <header className="bg-white shadow-md">
-      <div className="max-w-6xl mx-auto px-4 py-4">
+      <div className="container-max section-padding">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center">
+          <div className="flex-center">
             <Link
               to="/"
-              className="text-gray-600 hover:text-purple-600"
+              className="hover-text-accent"
               onClick={() => setIsMenuOpen(false)}
             >
-              <h1 className="text-2xl font-bold text-purple-600">
+              <h1 className="text-2xl font-bold text-accent">
                 ElectroShop
               </h1>
             </Link>
@@ -27,31 +27,31 @@ const Header = ({ onSearch }) => {
           <nav className="flex space-x-4 mb-4 md:mb-0">
             <Link
               to="/"
-              className="text-gray-600 hover:text-purple-600"
+              className="text-secondary hover-text-accent"
               onClick={() => setIsMenuOpen(false)}
             >
               Inicio
             </Link>
             <Link
               to="/about"
-              className="text-gray-600 hover:text-purple-600"
+              className="text-secondary hover-text-accent"
               onClick={() => setIsMenuOpen(false)}
             >
               Acerca de
             </Link>
             <Link
               to="/contact"
-              className="text-gray-600 hover:text-purple-600"
+              className="text-secondary hover-text-accent"
               onClick={() => setIsMenuOpen(false)}
             >
               Contacto
             </Link>
           </nav>
           <SearchBar onSearch={onSearch} />
-          <div className="flex items-center relative">
+          <div className="flex-center relative">
             <button
               onClick={() => setShowCartSummary(!showCartSummary)}
-              className="relative p-2 text-white hover:bg-purple-600 bg-purple-500 rounded-lg"
+              className="btn-primary relative"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -68,13 +68,13 @@ const Header = ({ onSearch }) => {
                 />
               </svg>
               {getTotalItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex-center">
                   {getTotalItems()}
                 </span>
               )}
             </button>
             {showCartSummary && (
-              <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg p-4 z-50">
+              <div className="absolute right-0 top-full mt-2 w-80 card z-50">
                 <CartSummary onClose={() => setShowCartSummary(false)} />
               </div>
             )}
@@ -88,21 +88,21 @@ const Header = ({ onSearch }) => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               to="/"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
+              className="header-link"
               onClick={() => setIsMenuOpen(false)}
             >
               Inicio
             </Link>
             <Link
               to="/about"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
+              className="header-link"
               onClick={() => setIsMenuOpen(false)}
             >
               Acerca de
             </Link>
             <Link
               to="/contact"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
+              className="header-link"
               onClick={() => setIsMenuOpen(false)}
             >
               Contacto

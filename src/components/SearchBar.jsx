@@ -21,7 +21,7 @@ const SearchBar = ({ onSearch }) => {
         />
         <button
           type="submit"
-          className="px-5 py-2 bg-purple-500 text-white rounded-r-lg hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="btn-primary rounded-r-lg"
         >
           Buscar
         </button>
